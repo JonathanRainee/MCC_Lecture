@@ -1,17 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/foundation/key.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:lecture_mcc/controller/UserController.dart';
-import 'package:lecture_mcc/view/login.dart';
+import 'package:lecture_mcc/view/register.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _LoginPageState extends State<LoginPage> {
+
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -21,7 +23,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("register Page"),
+        title: Text("login Page"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -53,10 +55,10 @@ class _RegisterPageState extends State<RegisterPage> {
             FlatButton(
               onPressed: (){
                 //TODO FORGOT PASSWORD SCREEN GOES HERE
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterPage()));
               },
               child: Text(
-                'sign in here',
+                'register here',
                 style: TextStyle(color: Colors.blue, fontSize: 15),
               ),
             ),
@@ -68,11 +70,11 @@ class _RegisterPageState extends State<RegisterPage> {
               child: FlatButton(
                 onPressed: () {
                   if(controller.email.text != "" && controller.pass.text != ""){
-                    UserController.instance.registerUser(controller.email.text.trim(), controller.pass.text.trim());
+                    UserController.instance.logInUser(controller.email.text.trim(), controller.pass.text.trim());
                   }
                 },
                 child: Text(
-                  'Register',
+                  'sign in',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),

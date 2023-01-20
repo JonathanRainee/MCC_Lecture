@@ -11,4 +11,8 @@ class UserController extends GetxController{
   void registerUser(String email, String pass){
     AuthRepository.instance.createUserWithEmailAndPassword(email, pass);
   }
+
+  void logInUser(String email, String pass){
+    AuthRepository.instance.signInWithEmailAndPassword(email, pass);
+  }
 }

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:lecture_mcc/main.dart';
 import 'package:lecture_mcc/view/home.dart';
+import 'package:lecture_mcc/view/login.dart';
 import 'package:lecture_mcc/view/register.dart';
 
 class AuthRepository extends GetxController{
@@ -24,24 +25,15 @@ class AuthRepository extends GetxController{
 
   Future<void> createUserWithEmailAndPassword(String email, String password) async{
     await _auth.createUserWithEmailAndPassword(email: email, password: password);
-    firebaseUser.value != null ? Get.offAll(() => const Homepage()) : Get.offAll(() => const RegisterPage());
+    Get.offAll(() => const LoginPage());
   }
 
   Future<void> signInWithEmailAndPassword(String email, String password) async{
     await _auth.signInWithEmailAndPassword(email: email, password: password);
+    firebaseUser.value != null ? Get.offAll(() => const Homepage()) : Get.offAll(() => const LoginPage());
   }
 
   Future<void> logOut() async{
-    if(_auth != null){
-      print("tidak null");
-    }else{
-      print("null");
-    }
     await _auth.signOut();
-    if(_auth != null){
-      print("sesudah tidak null");
-    }else{
-      print("sesudah null");
-    }
   } 
 }
