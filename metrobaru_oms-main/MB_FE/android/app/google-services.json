@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1068176163188",
+    "project_id": "mcclecture-12445",
+    "storage_bucket": "mcclecture-12445.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068176163188:android:9b9cedffe0a95c96906c21",
+        "android_client_info": {
+          "package_name": "com.example.fe_lec_finalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068176163188-ed3olb2kc3v7iiev2a9b2722om89mt3g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYkfgUGSx5cWf3HPvgoU69X7IJAdtl9ew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1068176163188-ed3olb2kc3v7iiev2a9b2722om89mt3g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
