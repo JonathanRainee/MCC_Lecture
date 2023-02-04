@@ -15,6 +15,7 @@ class Debug {
     accountCreationDate: "accountCreationDate",
     profilePicturePath:
         "https://www.allkpop.com/upload/2022/08/content/101514/1660158879-untitled-1.jpg",
+    docID: "rewtety"
   );
 
   static List<UserModel> dummyUser = [
@@ -26,6 +27,7 @@ class Debug {
       emailAddress: "calvinanacia123@gmail.com",
       phoneNumber: "+6282112341242",
       accountCreationDate: "accountCreationDate",
+      docID: "adfas"
     ),
     UserModel(
       id: 3.toString(),
@@ -35,6 +37,7 @@ class Debug {
       emailAddress: "alfridsanjayaleoputra@rocketmail.com",
       phoneNumber: "+6282183678923",
       accountCreationDate: "accountCreationDate",
+      docID: "adsigj"
     ),
     UserModel(
       id: 4.toString(),
@@ -46,6 +49,7 @@ class Debug {
       accountCreationDate: "accountCreationDate",
       profilePicturePath:
           "https://assets.pikiran-rakyat.com/crop/0x0:0x0/x/photo/2021/12/26/2206998485.jpg",
+      docID: "asdfas"
     ),
   ];
 

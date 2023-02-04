@@ -3,6 +3,8 @@ import 'dart:ffi';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fe_lec_finalproject/class/user.dart';
 import 'package:fe_lec_finalproject/controller/UserController.dart';
+import 'package:fe_lec_finalproject/page/admin/admin_main_page.dart';
+import 'package:fe_lec_finalproject/page/customer/customer_main_page.dart';
 import 'package:fe_lec_finalproject/page/home_page.dart';
 import 'package:fe_lec_finalproject/page/register_page.dart';
 import 'package:fe_lec_finalproject/page/sign_in_page.dart';
@@ -47,9 +49,8 @@ class AuthRepository extends GetxController{
     UserModel user;
     String UID = "";
     await _auth.createUserWithEmailAndPassword(email: email, password: password).then((value) => {
-
       UID = value.user!.uid.toString(),
-      user = UserModel(id: value.user!.uid.toString(), typeId: 1, typeName: role, username: username, emailAddress: email, phoneNumber: phoneNumber, accountCreationDate: date),
+      user = UserModel(id: value.user!.uid.toString(), typeId: 1, typeName: role, username: username, emailAddress: email, phoneNumber: phoneNumber, accountCreationDate: date, docID: "--"),
       createUser(user),
     }).whenComplete(() => 
       Get.offAll(() => const SignInPage())
@@ -57,45 +58,37 @@ class AuthRepository extends GetxController{
   }
 
   Future<void> signInWithEmailAndPassword(String email, String password) async{
-    // print("masuk jing: "+email);
     String UID = "";
     String name = "";
     String userEmail = "";
     String phoneNumber = "";
-    String typeId = "";
+    int typeId = 0;
     String typeName = "";
+    UserModel user;
     await _auth.signInWithEmailAndPassword(email: email, password: password).then((value) =>
-      // print("uid: "+value.user!.uid.toString())
       UID = value.user!.uid.toString()
     );
-    print("hello turn: "+UID);
+
     Stream<QuerySnapshot> ref = _db.collection("user").where("id", isEqualTo: UID).snapshots();
     ref.forEach((element) {
       element.docs.asMap().forEach((key, value) {
+        print(element.docs[0].id);
         name = element.docs[0]["username"];
         userEmail = element.docs[0]["emailAddress"];
         phoneNumber = element.docs[0]["phoneNumber"];
-        typeId = element.docs[0]["typeId"].toString();
+        typeId = element.docs[0]["typeId"];
         typeName = element.docs[0]["typeName"];
-
-        // print("id: "+UID);
-        print("username: "+name);
-        print("email: "+userEmail);
-        print("phoneNumber: "+phoneNumber);
-        print("typeId: "+typeId);
-        print("typeName: "+typeName);
-
       });
+      user = UserModel(id: UID, typeId: typeId, typeName: typeName, username: name, emailAddress: userEmail, phoneNumber: phoneNumber, accountCreationDate: "d", docID: element.docs[0].id);
+      print("apa nih "+user.username);
+      if(firebaseUser.value != null){
+        print("ada user");
+      }else{
+        print("gad user");
+      }
+      firebaseUser.value != null ? typeId == 1 ? Get.offAll(() => CUSMainPage(user: user)) : Get.offAll(() => ADMMainPage(user: user)) : Get.offAll(() => const SignInPage());
     });
-    // var snap = await _db.collection("user").where("id", isEqualTo: UID).get().then((QuerySnapshot value){
-    //   // final data = value. as Map<String, dynamic>;
-    //   value.docs.forEach((element) {
-    //     print(element.data().value);
-    //   });
-    // });
-    print("end");
-    // print(snap.value.data);
-    firebaseUser.value != null ? Get.offAll(() => const RegisterPage()) : Get.offAll(() => const SignInPage());
+
   }
 
   Future<void> logOut() async{

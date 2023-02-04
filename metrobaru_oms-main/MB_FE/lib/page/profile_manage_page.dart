@@ -1,9 +1,12 @@
+import 'package:fe_lec_finalproject/controller/UserController.dart';
 import 'package:fe_lec_finalproject/cui/cui_developer_information.dart';
 import 'package:fe_lec_finalproject/cui/cui_manage_list_view.dart';
+import 'package:fe_lec_finalproject/page/admin/admin_add_food.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 
 import '../class/color_palette.dart';
 import '../class/feature.dart';
@@ -13,12 +16,14 @@ import '../class/user.dart';
 class ProfileManagePage extends StatefulWidget {
   const ProfileManagePage({super.key, required this.user});
   final UserModel user;
+  
 
   @override
   State<ProfileManagePage> createState() => _ProfileManagePageState();
 }
 
 class _ProfileManagePageState extends State<ProfileManagePage> {
+  final controller = Get.put(UserController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -187,7 +192,9 @@ class _ProfileManagePageState extends State<ProfileManagePage> {
                             thickness: 1,
                           ),
                           CUIManageListView(
-                            function: () {},
+                            function: () {
+                              controller.logout();
+                            },
                             icon: Icons.logout_rounded,
                             title: "Logout",
                             hint: "Logout from your account",
@@ -272,7 +279,10 @@ class _ProfileManagePageState extends State<ProfileManagePage> {
                               ),
                             ),
                             CUIManageListView(
-                              function: () {},
+                              function: () {
+                                // Get.off(() => const AddFoodPage());
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => const AddFoodPage()));
+                              },
                               icon: Icons.menu_book_rounded,
                               title: "Manage items",
                               hint: "Manage menu items information",

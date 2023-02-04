@@ -1,10 +1,13 @@
+import 'package:fe_lec_finalproject/class/Food.dart';
 import 'package:fe_lec_finalproject/class/order_details.dart';
 import 'package:fe_lec_finalproject/class/size_config.dart';
+import 'package:fe_lec_finalproject/controller/FoodController.dart';
 import 'package:fe_lec_finalproject/cui/cui_item_grid_view.dart';
 import 'package:fe_lec_finalproject/page/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../class/color_palette.dart';
@@ -26,13 +29,16 @@ class _MenuListPageState extends State<MenuListPage> {
   late ScrollController _scrollController;
   double _scrollControllerOffset = 0.0;
 
+
   _scrollListener() {
     setState(() {
       _scrollControllerOffset = _scrollController.offset;
     });
   }
 
+  final controller = Get.put(FoodController());
   List<OrderDetails> cart = [];
+  List<Food> foodList = [];
   double totalPrice = 0.0;
 
   updateCart() {
@@ -72,6 +78,7 @@ class _MenuListPageState extends State<MenuListPage> {
   void initState() {
     _scrollController = ScrollController();
     _scrollController.addListener(_scrollListener);
+    controller.getAllFood();
     super.initState();
   }
 

@@ -16,12 +16,16 @@ class UserController extends GetxController{
     Get.put(AuthRepository.instance.createUserWithEmailAndPassword(email, pass, username, phoneNumber));
   }
 
-  static UserModel createUser(String id, int typeId, String typeName, String username, String email, String phoneNumber, String accountCreationDate){
-    UserModel u = UserModel(id: id, typeId: typeId, typeName: typeName, username: username, emailAddress: email, phoneNumber: phoneNumber, accountCreationDate: accountCreationDate);
+  static UserModel createUser(String id, int typeId, String typeName, String username, String email, String phoneNumber, String accountCreationDate, String docID){
+    UserModel u = UserModel(id: id, typeId: typeId, typeName: typeName, username: username, emailAddress: email, phoneNumber: phoneNumber, accountCreationDate: accountCreationDate, docID: docID);
     return u;
   }
 
   void logInUser(String email, String pass){
     AuthRepository.instance.signInWithEmailAndPassword(email, pass);
+  }
+
+  void logout(){
+    AuthRepository.instance.logOut();
   }
 }

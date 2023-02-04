@@ -119,7 +119,7 @@ class _SignInPageState extends State<SignInPage> with TickerProviderStateMixin {
                       CUIFormField(
                         controller: controller.email,
                         hintText: "Username",
-                        keyboardType: TextInputType.name,
+                        keyboardType: TextInputType.emailAddress,
                         suffixIcon: Icons.person_rounded,
                         top: 15,
                       ),

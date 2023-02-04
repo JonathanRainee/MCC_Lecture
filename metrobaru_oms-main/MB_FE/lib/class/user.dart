@@ -6,6 +6,7 @@ class UserModel {
   final String emailAddress;
   final String phoneNumber;
   final String accountCreationDate;
+  final String docID;
   final String? profilePicturePath;
 
   const UserModel({
@@ -16,8 +17,10 @@ class UserModel {
       required this.emailAddress,
       required this.phoneNumber,
       required this.accountCreationDate,
+      required this.docID,
       this.profilePicturePath
-    });
+  });
+
 
   toJson(){
     return{
@@ -27,7 +30,8 @@ class UserModel {
       "username": username,
       "emailAddress": emailAddress,
       "phoneNumber": phoneNumber,
-      "phoneNumber": phoneNumber
+      "phoneNumber": phoneNumber,
+      "docID" : docID
     };
   }
 }
