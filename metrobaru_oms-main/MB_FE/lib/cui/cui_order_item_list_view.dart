@@ -35,7 +35,7 @@ class _CUIOrderItemListViewState extends State<CUIOrderItemListView> {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(5),
                   child: Image.network(
-                    widget.orderItem.item.imagePath,
+                    widget.orderItem.item.name,
                     height: 40,
                     width: 40,
                     fit: BoxFit.cover,
@@ -48,7 +48,7 @@ class _CUIOrderItemListViewState extends State<CUIOrderItemListView> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.orderItem.item.name,
+                        widget.orderItem.item.description,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(

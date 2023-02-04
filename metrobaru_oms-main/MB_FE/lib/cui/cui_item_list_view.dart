@@ -1,3 +1,4 @@
+import 'package:fe_lec_finalproject/class/Food.dart';
 import 'package:fe_lec_finalproject/class/color_palette.dart';
 import 'package:fe_lec_finalproject/class/item.dart';
 import 'package:fe_lec_finalproject/class/size_config.dart';
@@ -51,7 +52,7 @@ class _CUIItemListViewState extends State<CUIItemListView> {
                     ),
                   ),
                   Text(
-                    Feature.getCurrency(widget.item.price),
+                    Feature.getCurrency(widget.item.price as double),
                     style: const TextStyle(
                       fontSize: 14,
                       color: Palette.dark,

@@ -29,7 +29,6 @@ class _MenuListPageState extends State<MenuListPage> {
   late ScrollController _scrollController;
   double _scrollControllerOffset = 0.0;
 
-
   _scrollListener() {
     setState(() {
       _scrollControllerOffset = _scrollController.offset;
@@ -78,7 +77,7 @@ class _MenuListPageState extends State<MenuListPage> {
   void initState() {
     _scrollController = ScrollController();
     _scrollController.addListener(_scrollListener);
-    controller.getAllFood();
+    foodList = controller.getAllFood();
     super.initState();
   }
 

@@ -67,7 +67,7 @@ class _CUICartListViewState extends State<CUICartListView> {
                   ),
                 ),
                 Text(
-                  "${Feature.getCurrency(widget.order.item.price)} (x${widget.order.quantity})",
+                  "${Feature.getCurrency(widget.order.item.price as double)} (x${widget.order.quantity})",
                   style: TextStyle(
                     fontSize: 12,
                     color: Palette.dark.withOpacity(0.6),

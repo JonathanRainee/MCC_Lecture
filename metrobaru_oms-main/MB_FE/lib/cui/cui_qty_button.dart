@@ -88,11 +88,11 @@ class _CUIQtyButtonState extends State<CUIQtyButton> {
                 if (widget.listener != null) {
                   widget.listener!(OrderDetails(
                     item: widget.order!.item,
-                    price: widget.order!.item.price * qty,
+                    price: widget.order!.item.price as double,
                     quantity: qty,
                     ready: widget.order!.ready,
                   ));
-                  widget.price!(widget.order!.item.price * qty);
+                  widget.price!(widget.order!.item.price);
                 }
                 setState(() {
                   widget.controller.text = qty.toString();

@@ -301,14 +301,14 @@ class _AddFoodPageState extends State<AddFoodPage>
                       CUIFormField(
                         controller: fController.name,
                         hintText: "Menu Name",
-                        keyboardType: TextInputType.name,
+                        keyboardType: TextInputType.text,
                         suffixIcon: Icons.person_rounded,
                         top: 15,
                       ),
                       CUIFormField(
                         controller: fController.price,
                         hintText: "Menu Price",
-                        keyboardType: TextInputType.phone,
+                        keyboardType: TextInputType.number,
                         suffixIcon: Icons.phone_rounded,
                         top: 20,
                       ),
